@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ilopX.teach.java'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 10.0
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
