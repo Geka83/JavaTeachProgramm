@@ -15,7 +15,6 @@ public class Attribute {
         }
     }
 
-
     public static FoundData Find(Object obj) {
         throw new NotImplementException();
     }
