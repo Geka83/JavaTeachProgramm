@@ -1,11 +1,10 @@
 package com.ilopX.teach.java._02_SimpleReflection;
 
-import java.lang.reflect.Field;
-
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws IllegalAccessException {
         var attributeClass = new AttributeClass(150, "Some Name");
+
         var foundData = Attribute.Find(attributeClass);
 
         if (foundData != null) {
@@ -13,5 +12,7 @@ public class Main {
                     "id=" + foundData.getIDValue() + " " +
                     "name=" + foundData.getNameValue());
         }
+        Attribute.FoundData.printNameAnnotationValues(attributeClass);
+
     }
 }
