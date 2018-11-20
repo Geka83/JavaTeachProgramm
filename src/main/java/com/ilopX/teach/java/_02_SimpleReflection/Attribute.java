@@ -21,6 +21,7 @@ public class Attribute {
         }
 
         public static void printNameAnnotationValues(Object obj) {
+
             try {
                 Field field = obj.getClass().getDeclaredField("name");
                 Name anno = field.getAnnotation(Name.class);
