@@ -20,17 +20,15 @@ public class Attribute {
             return nameValue;
         }
 
-        public static void printNameAnnotationValues(Object obj) {
-
-            try {
-                Field field = obj.getClass().getDeclaredField("name");
+        public static void readShowParametersAnnotation(Object obj) throws NoSuchFieldException {
+            Field field = obj.getClass().getDeclaredField("name");
+            if (field.isAnnotationPresent(Name.class)) {
                 Name anno = field.getAnnotation(Name.class);
                 System.out.println("Values of annotation members: "
                         + "minNameLength: " + anno.minNameLength()
                         + ", maxNameLength: " + anno.maxNameLength());
-            } catch (NoSuchFieldException | NullPointerException exc) {
+                }
                 System.out.println("Field or annotation not found!");
-            }
         }
     }
 
