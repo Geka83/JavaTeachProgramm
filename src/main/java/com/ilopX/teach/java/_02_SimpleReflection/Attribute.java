@@ -8,7 +8,7 @@ public class Attribute {
         private int idValue;
         private String nameValue;
 
-        public FoundData(int idValue, String nameValue){
+        public FoundData(int idValue, String nameValue) {
             this.idValue = idValue;
             this.nameValue = nameValue;
         }
@@ -19,13 +19,24 @@ public class Attribute {
         public String getNameValue() {
             return nameValue;
         }
+
+        public static void printNameAnnotationValues(Object obj) {
+            try {
+                Field field = obj.getClass().getDeclaredField("name");
+                Name anno = field.getAnnotation(Name.class);
+                System.out.println("Values of annotation members: "
+                        + "minNameLength: " + anno.minNameLength()
+                        + ", maxNameLength: " + anno.maxNameLength());
+            } catch (NoSuchFieldException | NullPointerException exc) {
+                System.out.println("Field or annotation not found!");
+            }
+        }
     }
 
     public static FoundData Find(Object obj) throws IllegalAccessException {
         int idValue = 0;
         String nameValue = null;
-        Class clazz = obj.getClass();
-        Field[] fields = clazz.getDeclaredFields();
+        Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             if (field.isAnnotationPresent(Name.class)) {
