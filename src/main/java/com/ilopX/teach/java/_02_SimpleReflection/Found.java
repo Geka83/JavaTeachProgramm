@@ -8,10 +8,12 @@ public class Found {
     public static class FoundData {
         private int idValue;
         private String nameValue;
+        private Annotation[] annotations;
 
-        public FoundData(int idValue, String nameValue) {
+        public FoundData(int idValue, String nameValue, Annotation[] annotations) {
             this.idValue = idValue;
             this.nameValue = nameValue;
+            this.annotations = annotations;
         }
         public int getIDValue() {
             return idValue;
@@ -21,27 +23,38 @@ public class Found {
             return nameValue;
         }
 
+        public Annotation[] getAnnotations() {
+            return annotations;
+        }
+    }
+
+    public static class FoundView {
+
+        public void printValuesAnnotationName(Annotation[] annotations) {
+
+            for(Annotation annotation : annotations) {
+                Name nameAnnotation = (Name) annotation;
+                System.out.println("minNameLength: " + nameAnnotation.minNameLength());
+                System.out.println("maxNameLength: " + nameAnnotation.maxNameLength());
+            }
+        }
     }
 
     public static FoundData Find(Object obj) throws IllegalAccessException {
         int idValue = 0;
         String nameValue = null;
+        Annotation[] parametersName = null;
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             if (field.isAnnotationPresent(Name.class)) {
                 nameValue = (String) field.get(obj);
+                parametersName = field.getDeclaredAnnotations();
             }
             else if (field.isAnnotationPresent(ID.class)) {
                 idValue = (Integer) field.get(obj);
             }
         }
-        return new FoundData(idValue, nameValue);
-    }
-
-    public static Annotation[] getAnnotationFild(Object obj, String fieldName) throws NoSuchFieldException {
-        Field field = obj.getClass().getDeclaredField(fieldName);
-        Annotation[] annotations = field.getDeclaredAnnotations();
-        return annotations;
+        return new FoundData(idValue, nameValue, parametersName);
     }
 }
