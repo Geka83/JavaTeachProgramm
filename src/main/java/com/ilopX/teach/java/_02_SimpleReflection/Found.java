@@ -3,7 +3,7 @@ package com.ilopX.teach.java._02_SimpleReflection;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
-public class Attribute {
+public class Found {
 
     public static class FoundData {
         private int idValue;
