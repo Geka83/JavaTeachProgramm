@@ -30,9 +30,9 @@ public class Found {
 
     public static class FoundView {
 
-        public void printValuesAnnotationName(Annotation[] annotations) {
+        public void printValuesAnnotationName(Annotation[] parametersName) {
 
-            for(Annotation annotation : annotations) {
+            for(Annotation annotation : parametersName) {
                 Name nameAnnotation = (Name) annotation;
                 System.out.println("minNameLength: " + nameAnnotation.minNameLength());
                 System.out.println("maxNameLength: " + nameAnnotation.maxNameLength());
