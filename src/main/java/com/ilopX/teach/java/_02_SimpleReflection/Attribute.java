@@ -1,5 +1,6 @@
 package com.ilopX.teach.java._02_SimpleReflection;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 public class Attribute {
@@ -20,16 +21,6 @@ public class Attribute {
             return nameValue;
         }
 
-        public static void readShowParametersAnnotation(Object obj) throws NoSuchFieldException {
-            Field field = obj.getClass().getDeclaredField("name");
-            if (field.isAnnotationPresent(Name.class)) {
-                Name anno = field.getAnnotation(Name.class);
-                System.out.println("Values of annotation members: "
-                        + "minNameLength: " + anno.minNameLength()
-                        + ", maxNameLength: " + anno.maxNameLength());
-                }
-                System.out.println("Field or annotation not found!");
-        }
     }
 
     public static FoundData Find(Object obj) throws IllegalAccessException {
@@ -46,5 +37,11 @@ public class Attribute {
             }
         }
         return new FoundData(idValue, nameValue);
+    }
+
+    public static Annotation[] getAnnotationFild(Object obj, String fieldName) throws NoSuchFieldException {
+        Field field = obj.getClass().getDeclaredField(fieldName);
+        Annotation[] annotations = field.getDeclaredAnnotations();
+        return annotations;
     }
 }
