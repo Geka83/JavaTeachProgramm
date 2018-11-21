@@ -1,7 +1,7 @@
 package com.ilopX.teach.java._02_SimpleReflection;
 
 public class AttributeClass {
-    @Name
+    @Name(minNameLength = 5, maxNameLength = 10)
     private String name;
     @ID
     private int id;
