@@ -7,6 +7,7 @@ import com.ilopX.teach.java._02_SimpleReflection.data.Found;
 public class Main {
 
     public static void main(String[] args) throws AnnotationNotFoundException, IllegalAccessException {
+
             var attributeClass = new AttributeClass(150, "Some Name");
             Found.findThrows(attributeClass);
             var foundData = Found.Find(attributeClass);
