@@ -6,6 +6,7 @@ import com.ilopX.teach.java._02_SimpleReflection.annotation.Name;
 public class AttributeClass {
     @ID
     private int id;
+
     @Name(minNameLength = 5, maxNameLength = 10)
     private String name;
 
