@@ -1,4 +1,7 @@
-package com.ilopX.teach.java._02_SimpleReflection.annotation;
+package com.ilopX.teach.java._02_SimpleReflection.example;
+
+import com.ilopX.teach.java._02_SimpleReflection.annotation.ID;
+import com.ilopX.teach.java._02_SimpleReflection.annotation.Name;
 
 public class AttributeClass {
     @ID
