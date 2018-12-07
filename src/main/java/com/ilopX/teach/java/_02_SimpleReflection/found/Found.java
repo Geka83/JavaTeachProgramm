@@ -3,45 +3,10 @@ package com.ilopX.teach.java._02_SimpleReflection.found;
 import com.ilopX.teach.java._02_SimpleReflection.AnnotationNotFoundException;
 import com.ilopX.teach.java._02_SimpleReflection.annotation.ID;
 import com.ilopX.teach.java._02_SimpleReflection.annotation.Name;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 public class Found {
-
-    public static class FoundData {
-        private int idValue;
-        private String nameValue;
-        private Name nameValues;
-
-        public FoundData(int idValue, String nameValue, Name nameValues) {
-            this.idValue = idValue;
-            this.nameValue = nameValue;
-            this.nameValues = nameValues;
-        }
-        public int getIDValue() {
-            return idValue;
-        }
-
-        public String getNameValue() {
-            return nameValue;
-        }
-
-        public Name getNameAnnotation() {
-            return nameValues;
-        }
-    }
-
-    public static class FoundView {
-
-        public void printFoundDataValues(Found.FoundData foundData) {
-            System.out.println("Found: "
-                    + "id=" + foundData.getIDValue()
-                    + " name=" + foundData.getNameValue()
-                    + " minNameLength=" + foundData.getNameAnnotation().minNameLength()
-                    + " maxNameLength=" + foundData.getNameAnnotation().maxNameLength());
-        }
-    }
 
     public static FoundData Find(Object obj) throws IllegalAccessException {
         int idValue = 0;
@@ -67,7 +32,7 @@ public class Found {
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             if (!field.isAnnotationPresent(Name.class) & !field.isAnnotationPresent(ID.class)) {
-                throw new AnnotationNotFoundException("AnnotationNotFound");
+                throw new AnnotationNotFoundException();
             }
         }
     }
