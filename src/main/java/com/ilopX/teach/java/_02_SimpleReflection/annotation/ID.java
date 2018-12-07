@@ -1,4 +1,4 @@
-package com.ilopX.teach.java._02_SimpleReflection.attribute;
+package com.ilopX.teach.java._02_SimpleReflection.annotation;
 
 import java.lang.annotation.*;
 
