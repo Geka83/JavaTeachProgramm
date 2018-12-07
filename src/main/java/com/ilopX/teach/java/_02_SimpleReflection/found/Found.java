@@ -1,8 +1,8 @@
 package com.ilopX.teach.java._02_SimpleReflection.found;
 
-import com.ilopX.teach.java._02_SimpleReflection.attribute.AnnotationNotFoundException;
-import com.ilopX.teach.java._02_SimpleReflection.attribute.ID;
-import com.ilopX.teach.java._02_SimpleReflection.attribute.Name;
+import com.ilopX.teach.java._02_SimpleReflection.AnnotationNotFoundException;
+import com.ilopX.teach.java._02_SimpleReflection.annotation.ID;
+import com.ilopX.teach.java._02_SimpleReflection.annotation.Name;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -27,7 +27,7 @@ public class Found {
             return nameValue;
         }
 
-        public Name getNameValues() {
+        public Name getNameAnnotation() {
             return nameValues;
         }
     }
@@ -38,8 +38,8 @@ public class Found {
             System.out.println("Found: "
                     + "id=" + foundData.getIDValue()
                     + " name=" + foundData.getNameValue()
-                    + " minNameLength=" + foundData.getNameValues().minNameLength()
-                    + " maxNameLength=" + foundData.getNameValues().maxNameLength());
+                    + " minNameLength=" + foundData.getNameAnnotation().minNameLength()
+                    + " maxNameLength=" + foundData.getNameAnnotation().maxNameLength());
         }
     }
 
