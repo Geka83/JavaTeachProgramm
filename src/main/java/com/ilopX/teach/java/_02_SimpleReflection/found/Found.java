@@ -7,9 +7,14 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 public class Found {
+    public static FoundData Find(Object obj) {
+        try {
+            return findThrows(obj);
+        } catch (AnnotationNotFoundException e) {
+            return null;
+        }
+    }
 
-    public static FoundData Find(Object obj) throws IllegalAccessException {
-        int idValue = 0;
         String nameValue = null;
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
