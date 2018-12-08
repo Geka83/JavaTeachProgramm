@@ -15,6 +15,8 @@ public class Found {
         }
     }
 
+    public static FoundData findThrows(Object obj) throws AnnotationNotFoundException {
+        /*int idValue = 0;
         String nameValue = null;
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
@@ -30,15 +32,13 @@ public class Found {
                 return new FoundData(idValue, nameValue, (Name) nameAnnotation);
             }
         }
-        return null;
-    }
 
-    public static void findThrows(Object obj) throws AnnotationNotFoundException {
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             if (!field.isAnnotationPresent(Name.class) & !field.isAnnotationPresent(ID.class)) {
                 throw new AnnotationNotFoundException();
             }
-        }
+        }*/
+        return null;
     }
 }
