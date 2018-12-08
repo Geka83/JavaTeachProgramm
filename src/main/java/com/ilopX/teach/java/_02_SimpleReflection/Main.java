@@ -1,22 +1,18 @@
 package com.ilopX.teach.java._02_SimpleReflection;
-
-import com.ilopX.teach.java._02_SimpleReflection.attribute.AnnotationNotFoundException;
-import com.ilopX.teach.java._02_SimpleReflection.attribute.AttributeClass;
-import com.ilopX.teach.java._02_SimpleReflection.data.Found;
+import com.ilopX.teach.java._02_SimpleReflection.example.AttributeClass;
+import com.ilopX.teach.java._02_SimpleReflection.found.Found;
+import com.ilopX.teach.java._02_SimpleReflection.found.FoundDataView;
 
 public class Main {
-
-    public static void main(String[] args) throws AnnotationNotFoundException, IllegalAccessException {
-
-            var attributeClass = new AttributeClass(150, "Some Name");
-            Found.findThrows(attributeClass);
-            var foundData = Found.Find(attributeClass);
-
-            if (foundData != null) {
-                var foundView = new Found.FoundView();
-                foundView.printFoundDataValues(foundData);
-            } else {
-                System.err.println("Found.FoundData foundData == Null!");
-            }
+    public static void main(String[] args) {
+        var attributeClass = new AttributeClass(150, "Some Name");
+        try {
+            var foundData = Found.findThrows(attributeClass);
+            var view = new FoundDataView(foundData);
+            view.setVisibleAnnotationParameters(false);
+            System.out.println(view);
+        } catch (AnnotationNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
